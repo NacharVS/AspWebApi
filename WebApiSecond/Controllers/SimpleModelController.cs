@@ -14,12 +14,12 @@ namespace WebApiSecond.Controllers
            return Ok();
         }
 
-        //[HttpGet("/getModel")]
-        //[Route("{name:string}")]
-        //public IActionResult GetFirstInList([FromRoute]string name)
-        //{
-        //    return Ok();
-        //}
+        [HttpGet("GetSingle")]
+        public IActionResult GetFirstInList(string name)
+        {
+            var obj = SimpleModel.GetModels().Find(x => x.Name == name);
+            return Ok(obj);
+        }
         [HttpPost]
         public IActionResult SendModel(SimpleModel model)
         {
