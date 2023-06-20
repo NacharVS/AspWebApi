@@ -10,8 +10,20 @@ namespace WebApiSecond.Controllers
     {
         [HttpGet]
         public IActionResult GetAllModels()
+        {          
+           return Ok();
+        }
+
+        //[HttpGet("/getModel")]
+        //[Route("{name:string}")]
+        //public IActionResult GetFirstInList([FromRoute]string name)
+        //{
+        //    return Ok();
+        //}
+        [HttpPost]
+        public IActionResult SendModel(SimpleModel model)
         {
-           return Ok(SimpleModel.GetModels());
+            return Ok();
         }
     }
 }

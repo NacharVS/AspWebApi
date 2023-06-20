@@ -18,6 +18,9 @@
             var list = new List<SimpleModel>();
             list.Add(new SimpleModel("vadim", 33, "vadim@mail.ru"));
             list.Add(new SimpleModel("Victor", 22, "victor@mail.ru"));
+            list.Add(new SimpleModel("Grigoriy", 22, "victor@mail.ru"));
+            list.Add(new SimpleModel("Georgiy", 22, "victor@mail.ru"));
+            list.Add(new SimpleModel("Nick", 22, "victor@mail.ru"));
             return list;
         }
     }
