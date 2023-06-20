@@ -8,7 +8,7 @@ namespace WebApiSecond.Controllers
     [ApiController]
     public class SimpleModelController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet("AllModels")]
         public IActionResult GetAllModels()
         {          
            return Ok(DbExtensions.GetAllDocs());
@@ -33,7 +33,7 @@ namespace WebApiSecond.Controllers
             return Ok();
         }
 
-        [HttpPut("UpdateAge")]
+        [HttpPut("GgWp")]
         public IActionResult UpdateModel(string name, int age)
         {
             DbExtensions.UpdateDoc(name, age);
@@ -46,6 +46,14 @@ namespace WebApiSecond.Controllers
             DbExtensions.DeleteDoc(name);
             return Ok();
         }
+
+        [HttpGet("GetusersInventory")]
+        public IActionResult GetInventory(string name)
+        {
+            var inventory = DbExtensions.GetUsersInventory(name);
+            return Ok(inventory);
+        }
+
 
     }
 }

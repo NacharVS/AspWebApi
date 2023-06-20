@@ -30,6 +30,14 @@ namespace WebApiSecond.Models
             return collection.Find(x => x.Name == name).SingleOrDefault();
         }
 
+        public static List<InvetoryItem> GetUsersInventory(string name)
+        {
+            var client = new MongoClient();
+            var database = client.GetDatabase("SimpleModels");
+            var collection = database.GetCollection<SimpleModel>("Documents");
+            return collection.Find(x => x.Name == name).SingleOrDefault().InvetoryItems;
+        }
+
         public static void ReplaseDoc (string name, SimpleModel newModel)
         {
             var client = new MongoClient();

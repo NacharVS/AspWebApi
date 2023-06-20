@@ -10,6 +10,7 @@ namespace WebApiSecond.Models
             Name = name;
             Age = age;
             EMail = eMail;
+            InvetoryItems = new List<InvetoryItem>();
         }
         [BsonId]
         [BsonIgnoreIfDefault]
@@ -17,6 +18,8 @@ namespace WebApiSecond.Models
         public string? Name { get; set; }
         public int Age { get; set; }
         public string? EMail { get; set; }
+        
+        public List<InvetoryItem> InvetoryItems { get; set; }
 
         public static List<SimpleModel> GetModels()
         {
