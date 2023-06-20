@@ -34,5 +34,14 @@ namespace WebApiSecond.Controllers
             return Ok(models);
         }
 
+        [HttpPut("UpdateAge")]
+        public IActionResult UpdateModel(string name, int age)
+        {
+            var models = SimpleModel.GetModels();
+            int index = models.FindIndex(x => x.Name == name);
+            //models[index] = modelForUpdate;
+            return Ok(models);
+        }
+
     }
 }
