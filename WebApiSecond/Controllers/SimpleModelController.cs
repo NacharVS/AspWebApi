@@ -11,36 +11,40 @@ namespace WebApiSecond.Controllers
         [HttpGet]
         public IActionResult GetAllModels()
         {          
-           return Ok();
+           return Ok(DbExtensions.GetAllDocs());
         }
 
         [HttpGet("GetSingle")]
         public IActionResult GetFirstInList(string name)
         {
-            var obj = SimpleModel.GetModels().Find(x => x.Name == name);
+            var obj = DbExtensions.GetSingleModel(name);
             return Ok(obj);
         }
         [HttpPost]
         public IActionResult SendModel(SimpleModel model)
         {
+            DbExtensions.AddDocs(model);
             return Ok();
         }
         [HttpPut]
         public IActionResult UpdateModel(string name, SimpleModel modelForUpdate)
         {
-            var models = SimpleModel.GetModels();
-            int index = models.FindIndex(x => x.Name == name);
-            models[index] = modelForUpdate;
-            return Ok(models);
+            DbExtensions.ReplaseDoc(name, modelForUpdate);
+            return Ok();
         }
 
         [HttpPut("UpdateAge")]
         public IActionResult UpdateModel(string name, int age)
         {
-            var models = SimpleModel.GetModels();
-            int index = models.FindIndex(x => x.Name == name);
-            //models[index] = modelForUpdate;
-            return Ok(models);
+            DbExtensions.UpdateDoc(name, age);
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteModel(string name)
+        {
+            DbExtensions.DeleteDoc(name);
+            return Ok();
         }
 
     }

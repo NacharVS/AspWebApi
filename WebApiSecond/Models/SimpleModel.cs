@@ -1,4 +1,7 @@
-﻿namespace WebApiSecond.Models
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace WebApiSecond.Models
 {
     public class SimpleModel
     {
@@ -8,7 +11,9 @@
             Age = age;
             EMail = eMail;
         }
-
+        [BsonId]
+        [BsonIgnoreIfDefault]
+        public ObjectId _id { get; set; }
         public string? Name { get; set; }
         public int Age { get; set; }
         public string? EMail { get; set; }
@@ -22,6 +27,11 @@
             list.Add(new SimpleModel("Georgiy", 22, "victor@mail.ru"));
             list.Add(new SimpleModel("Nick", 22, "victor@mail.ru"));
             return list;
+        }
+
+        public void ChangeAge(int newAge)
+        {
+            Age = newAge;
         }
     }
 }
